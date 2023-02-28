@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 export default function Board() {
+  const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   function row(rowNum) {
@@ -25,8 +26,13 @@ export default function Board() {
 
   function handleClick(squareNo) {
     const nextSquares = squares.slice();
-    nextSquares[squareNo] = "X";
+    let sign = 'X';
+    if (!xIsNext) {
+      sign = 'O';
+    }
+    nextSquares[squareNo] = sign;
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);
   }
 
   return (<React.Fragment> {  Array(3).fill(null).map((_, rowNum) => row(rowNum)) }
