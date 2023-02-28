@@ -2,12 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 
 export default function Board() {
-  return (<React.Fragment> {  [1, 2, 3].map(rowNum => row(rowNum)) }
+  return (<React.Fragment> {  Array(3).fill(null).map((_, rowNum) => row(rowNum)) }
   </React.Fragment>);
 
   function row(rowNum) {
     return <div className="board-row">
-      { [1, 2, 3].map(colNum => 
+      { Array(3).fill(0).map(colNum => 
       <Square />
       )}
     </div>;
