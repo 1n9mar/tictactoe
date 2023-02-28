@@ -9,7 +9,7 @@ export default function Square() {
   }
 
   function cell(rowNum, colNum) {
-    return <button className="square">X</button>;
+    return <button className="square">{(rowNum-1)+colNum}</button>;
   }
 }
 
