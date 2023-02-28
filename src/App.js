@@ -24,7 +24,14 @@ export default function Board() {
     </button>;
   }
 
+  function isSquareFilled(squareNo) {
+    return !!squares[squareNo];
+  }
+
   function handleClick(squareNo) {
+    if (isSquareFilled(squareNo)) {
+      return;
+    }
     const nextSquares = squares.slice();
     let sign = 'X';
     if (!xIsNext) {
