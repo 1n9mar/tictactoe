@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 
 export default function Board() {
   return (<React.Fragment> {  [1, 2, 3].map(rowNum => row(rowNum)) }
@@ -7,12 +8,13 @@ export default function Board() {
   function row(rowNum) {
     return <div className="board-row">
       { [1, 2, 3].map(colNum => 
-      <Square value={(rowNum - 1) + colNum}/>
+      <Square />
       )}
     </div>;
   }
 
-  function Square({value}) {
+  function Square() {
+    const [value, setValue] = useState(null);
 
     function handleClick() {
       console.log('clicked!');
@@ -21,7 +23,7 @@ export default function Board() {
     return <button 
     className="square"
     onClick={handleClick}>
-      {value}
+      X
     </button>;
   }
 }
