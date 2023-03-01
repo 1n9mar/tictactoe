@@ -28,7 +28,53 @@ export default function Board() {
     return !!squares[squareNo];
   }
 
+  function containsThisWinningPosition(relevantSquares, winningPosition) {
+    for (const index of winningPosition) {
+      if (!relevantSquares.includes(index)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function containsAWinningPositionForPlayer(player) {
+    const winningPositions = [
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+      [0,3,6],
+      [1,4,7],
+      [2,5,8],
+      [0,4,8],
+      [2,4,6]
+    ];
+
+    const relevantSquares = extractSquareIndexesWithValue(player);
+
+    for (const winningPosition of winningPositions) {
+      if (containsThisWinningPosition(relevantSquares, winningPosition)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function extractSquareIndexesWithValue(value) {
+    const indexes = [];
+    for (let i = 0; i<squares.length; i++) {
+      if (squares[i] === value) {
+        indexes.push(i);
+      }
+    }
+    return indexes;
+  }
+
   function calculateWinner() {
+    for (const player of ['X', 'Y']) {
+      if (containsAWinningPositionForPlayer(player)) {
+        return player;
+      }
+    }
     return null;
   }
 
@@ -50,7 +96,7 @@ export default function Board() {
   
   const winner = calculateWinner();
   if (winner) {
-    status = "Winner: " + status;
+    status = "Winner: " + winner;
   }
 
   return (<React.Fragment> 
