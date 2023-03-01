@@ -78,8 +78,12 @@ export default function Board() {
     return null;
   }
 
+  function gameIsFinished() {
+    return !!winner;
+  }
+
   function handleClick(squareNo) {
-    if (isSquareFilled(squareNo)) {
+    if (isSquareFilled(squareNo) || gameIsFinished()) {
       return;
     }
     const nextSquares = squares.slice();
