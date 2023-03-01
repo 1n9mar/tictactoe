@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 
 export default function Board() {
@@ -103,10 +102,12 @@ export default function Board() {
     status = "Winner: " + winner;
   }
 
-  return (<React.Fragment> 
+  return (
+  <> 
     <div className="status">{status}</div>
     {  Array(3).fill(null).map((_, rowNum) => row(rowNum)) }
-  </React.Fragment>);
+  </>
+  );
 
 }
 
