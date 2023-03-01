@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
+
 export default function Board() {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -18,6 +19,7 @@ export default function Board() {
 
   function Square({value, onSquareClick}) {
     return <Button
+    variant="light"
     className="square"
     onClick={onSquareClick}>
       {value}
@@ -104,10 +106,10 @@ export default function Board() {
   }
 
   return (
-  <> 
+  <div className="App min-vh-100 justify-content-center align-items-center"> 
     <div className="status">{status}</div>
     {  Array(3).fill(null).map((_, rowNum) => row(rowNum)) }
-  </>
+  </div>
   );
 
 }
