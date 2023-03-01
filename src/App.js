@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 export default function Board() {
   const [xIsNext, setXIsNext] = useState(true);
@@ -16,11 +17,11 @@ export default function Board() {
   }
 
   function Square({value, onSquareClick}) {
-    return <button 
+    return <Button
     className="square"
     onClick={onSquareClick}>
       {value}
-    </button>;
+    </Button>;
   }
 
   function isSquareFilled(squareNo) {
