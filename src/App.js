@@ -28,6 +28,10 @@ export default function Board() {
     return !!squares[squareNo];
   }
 
+  function calculateWinner() {
+    return null;
+  }
+
   function handleClick(squareNo) {
     if (isSquareFilled(squareNo)) {
       return;
@@ -42,7 +46,16 @@ export default function Board() {
     setXIsNext(!xIsNext);
   }
 
-  return (<React.Fragment> {  Array(3).fill(null).map((_, rowNum) => row(rowNum)) }
+  let status = "Next player: " + ((xIsNext) ? 'X' : 'O');
+  
+  const winner = calculateWinner();
+  if (winner) {
+    status = "Winner: " + status;
+  }
+
+  return (<React.Fragment> 
+    <div className="status">{status}</div>
+    {  Array(3).fill(null).map((_, rowNum) => row(rowNum)) }
   </React.Fragment>);
 
 }
