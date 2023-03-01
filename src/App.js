@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 
 export default function Board() {
@@ -107,7 +108,7 @@ export default function Board() {
 
   return (
   <div className="App min-vh-100 justify-content-center align-items-center"> 
-    <div className="status">{status}</div>
+    <Alert variant={ gameIsFinished() ? "success" : "info"}>{status}</Alert>
     {  Array(3).fill(null).map((_, rowNum) => row(rowNum)) }
   </div>
   );
